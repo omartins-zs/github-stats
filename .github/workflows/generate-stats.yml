@@ -1,0 +1,36 @@
+name: Gerar GitHub Stats (Automático)
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Roda todos os dias à meia-noite (UTC)
+  workflow_dispatch: # Permite rodar manualmente clicando em um botão
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Dependências
+        run: npm install
+
+      - name: Gerar Card SVG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          THEME: "dracula" # Temas permitidos: radical, prussian, nord, default, dark, dracula
+        run: node generate.js
+
+      - name: Commitar e Fazer Push do SVG
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/stats.svg
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update GitHub Stats Card [skip ci]"
+          git push
