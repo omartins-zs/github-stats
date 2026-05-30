@@ -21,7 +21,7 @@ export const renderCard = (stats, themeName = 'default') => {
       
       <text x="25" y="35" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-weight="600" font-size="18px" fill="#${theme.title_color}">${name}'s GitHub Stats</text>
       
-      <g transform="translate(370, 47)">
+      <g transform="translate(370, 105)">
         <circle cx="-10" cy="8" r="40" stroke="#${theme.title_color}" fill="none" stroke-width="6" opacity="0.2" />
         <circle cx="-10" cy="8" r="40" stroke="#${theme.title_color}" fill="none" stroke-width="6" stroke-linecap="round" opacity="0.8" stroke-dasharray="250" stroke-dashoffset="${dashoffset}" transform="rotate(-90, -10, 8)" />
         <text x="-10" y="8" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-weight="800" font-size="24px" fill="#${theme.title_color}" alignment-baseline="central" dominant-baseline="central" text-anchor="middle">
