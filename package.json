@@ -1,0 +1,10 @@
+{
+  "name": "github-stats",
+  "version": "1.0.0",
+  "description": "API Privada e Otimizada para GitHub Stats no Vercel",
+  "main": "api/stats.js",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.6.8"
+  }
+}
