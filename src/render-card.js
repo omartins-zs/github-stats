@@ -1,8 +1,19 @@
 import { themes } from './themes.js';
+import { calculateRank, calculateCircleProgress } from './calculateRank.js';
 
 export const renderCard = (stats, themeName = 'default') => {
   const { name, totalStars, totalCommits, totalPRs, totalIssues } = stats;
   const theme = themes[themeName] || themes.default;
+  
+  const rank = calculateRank({
+    commits: totalCommits,
+    prs: totalPRs,
+    issues: totalIssues,
+    stars: totalStars
+  });
+  
+  const progress = 100 - rank.percentile;
+  const dashoffset = calculateCircleProgress(progress);
 
   return `
     <svg width="450" height="195" viewBox="0 0 450 195" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,6 +21,14 @@ export const renderCard = (stats, themeName = 'default') => {
       
       <text x="25" y="35" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-weight="600" font-size="18px" fill="#${theme.title_color}">${name}'s GitHub Stats</text>
       
+      <g transform="translate(370, 47)">
+        <circle cx="-10" cy="8" r="40" stroke="#${theme.title_color}" fill="none" stroke-width="6" opacity="0.2" />
+        <circle cx="-10" cy="8" r="40" stroke="#${theme.title_color}" fill="none" stroke-width="6" stroke-linecap="round" opacity="0.8" stroke-dasharray="250" stroke-dashoffset="${dashoffset}" transform="rotate(-90, -10, 8)" />
+        <text x="-10" y="8" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-weight="800" font-size="24px" fill="#${theme.title_color}" alignment-baseline="central" dominant-baseline="central" text-anchor="middle">
+          ${rank.level}
+        </text>
+      </g>
+
       <g transform="translate(25, 65)">
         <svg fill="#${theme.icon_color}" viewBox="0 0 16 16" width="16" height="16">
           <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
