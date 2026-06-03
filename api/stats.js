@@ -7,7 +7,8 @@ const GITHUB_USERNAME = 'omartins-zs';
 export default async function handler(req, res) {
   // Configured exclusively for the repository owner
   const token = process.env.GITHUB_TOKEN;
-  const theme = req.query.theme || 'default';
+  const themeQuery = req.query.theme || 'default';
+  const theme = typeof themeQuery === 'string' ? themeQuery.toLowerCase() : 'default';
 
   if (!token) {
     res.setHeader("Content-Type", "image/svg+xml");
