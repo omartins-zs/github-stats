@@ -1,13 +1,5 @@
 import { themes } from './themes.js';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-// Import JSON dynamically to support module resolution in Vercel/Node
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const languageColorsPath = path.resolve(__dirname, 'languageColors.json');
-const languageColors = JSON.parse(fs.readFileSync(languageColorsPath, 'utf-8'));
+import languageColors from './languageColors.js';
 
 export const renderWakatimeCard = (stats, options = {}) => {
   const {
@@ -35,7 +27,16 @@ export const renderWakatimeCard = (stats, options = {}) => {
   let contentSvg = "";
   let height = 150;
 
-  if (layout === 'compact') {
+  if (languages.length === 0) {
+    contentSvg = `
+      <text x="25" y="75" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="14px" font-weight="600" fill="#${theme.text_color}">
+        No public coding activity found.
+      </text>
+      <text x="25" y="95" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="12px" fill="#${theme.text_color}">
+        Please enable 'Display code time publicly' in WakaTime.
+      </text>
+    `;
+  } else if (layout === 'compact') {
     height = 90 + Math.round(languages.length / 2) * 25;
     
     // Progress Bar

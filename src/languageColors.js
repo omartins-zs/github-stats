@@ -1,3 +1,4 @@
+export default  
 {
     "1C Enterprise": "#814CCC",
     "2-Dimensional Array": "#38761D",
