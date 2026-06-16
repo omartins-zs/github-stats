@@ -5,7 +5,7 @@
       
       <g transform="translate(370, 105)">
         <circle cx="-10" cy="8" r="40" stroke="#ff6e96" fill="none" stroke-width="6" opacity="0.2" />
-        <circle cx="-10" cy="8" r="40" stroke="#ff6e96" fill="none" stroke-width="6" stroke-linecap="round" opacity="0.8" stroke-dasharray="250" stroke-dashoffset="174.4709516535598" transform="rotate(-90, -10, 8)" />
+        <circle cx="-10" cy="8" r="40" stroke="#ff6e96" fill="none" stroke-width="6" stroke-linecap="round" opacity="0.8" stroke-dasharray="250" stroke-dashoffset="174.46599376815806" transform="rotate(-90, -10, 8)" />
         <text x="-10" y="8" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-weight="800" font-size="24px" fill="#ff6e96" alignment-baseline="central" dominant-baseline="central" text-anchor="middle">
           B-
         </text>
@@ -24,7 +24,7 @@
           <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
         </svg>
         <text x="25" y="12.5" font-family="'Segoe UI', Ubuntu, Helvetica Neue, Sans-Serif" font-weight="600" font-size="14px" fill="#f8f8f2">Total Commits:</text>
-        <text x="140" y="12.5" font-family="'Segoe UI', Ubuntu, Helvetica Neue, Sans-Serif" font-weight="600" font-size="14px" fill="#f8f8f2">7534</text>
+        <text x="140" y="12.5" font-family="'Segoe UI', Ubuntu, Helvetica Neue, Sans-Serif" font-weight="600" font-size="14px" fill="#f8f8f2">7566</text>
       </g>
 
       <g transform="translate(25, 125)">
