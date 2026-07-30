@@ -31,9 +31,7 @@ export const fetchStats = async (username, token) => {
         login
         repositories(first: 100, ownerAffiliations: OWNER, orderBy: {direction: DESC, field: STARGAZERS}) {
           nodes {
-            stargazers {
-              totalCount
-            }
+            stargazerCount
           }
         }
         pullRequests(first: 1) {
@@ -66,7 +64,7 @@ export const fetchStats = async (username, token) => {
     
     // Sum all stars from repositories
     const totalStars = user.repositories.nodes.reduce((acc, repo) => {
-      return acc + repo.stargazers.totalCount;
+      return acc + repo.stargazerCount;
     }, 0);
 
     const totalCommits = await fetchTotalCommits(username, token);
